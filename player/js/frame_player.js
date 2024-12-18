@@ -1,5 +1,5 @@
 /* 폭죽 플러그인 등록 */
-gsap.registerPlugin(Physics2DPlugin);
+/* gsap.registerPlugin(Physics2DPlugin); */
 
 /* 3초 후 실행 */
 setTimeout(function () {
