@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+	<title>300x250</title>
+	<link rel="stylesheet" type="text/css" href="//img.mobon.net/Frtb/common/css/mobon_reset.css?201706292">
+	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/jquery.js"></script>
+	<script type="text/javascript" src="//img.mobon.net/js/mobonStorage.js"></script>
+	<!--[if lt IE 9]
+	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/respond.js"></script>
+	<![endif]-->
+	<!--[if lt IE 8]
+	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/html5.js"></script>
+	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/ie7.js"></script>
+	<link type="text/css" rel="stylesheet" href="//img.mobon.net/Frtb/common/css/ie7.css">
+	<![endif]-->
+	<script type="text/javascript" src="//img.mobon.net/newAd/common/webutil.js"></script>
+	<script type="text/javascript" src="//img.mobon.net/Frtb/js/frame_default_script_S.js"></script>
+	<!-- 폭죽 라이브러리 추가 -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/Physics2DPlugin3.min.js"></script>
+	<!-- 터치펀치 라이브러리 추가 2 -->
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+	<!-- header END -->
+	<script type="text/javascript" src="//img.mobon.net/js/bounceRate.js"></script>
+	<link rel="stylesheet" type="text/css" href="//img.mobon.net/Frtb/css/frame_point.css">
+
+	<style>
+		/* font */
+		@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+		/* Normalize */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.mobon_reset {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: relative;
+			width: 300px;
+			height: 250px;
+			font-family: Pretendard;
+			color: #000;
+			background: url('../img/img-background.png') no-repeat center/cover;
+			overflow: hidden;
+		}
+
+		.gift_set {
+			position: relative;
+			display: flex;
+			flex: 1;
+			column-gap: 16px;
+			padding: 15px 15px 10px;
+		}
+
+		.gift_set.active::before {
+			z-index: -1;
+		}
+
+		.gift_set.active::after {
+			z-index: -1;
+		}
+
+		.gift_set::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 80px;
+			height: 80px;
+			background: url('../img/img-frame-01.png') no-repeat center;
+			z-index: 3;
+		}
+
+		.gift_set::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 50px;
+			height: 50px;
+			background: url('../img/img-frame-02.png') no-repeat center;
+			z-index: 3;
+		}
+
+		.box_wrap {
+			position: relative;
+			width: 207px;
+			height: 157px;
+			border: 5px solid #202020;
+			border-top: none;
+			background-color: #0f0f0f;
+		}
+
+		.box_wrap_bg.active {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: url('../img/img-box.png') no-repeat center/cover;
+			z-index: 2;
+			animation: bg 1.5s forwards ease-in-out;
+			transform-origin: top;
+			transform-style: preserve-3d;
+		}
+
+		@keyframes bg {
+			0% {
+				transform: perspective(800px) rotateX(90deg);
+				opacity: 1;
+			}
+
+			100% {
+				transform: perspective(800px) rotateX(0deg);
+				opacity: 1;
+			}
+		}
+
+		.box_name {
+			width: 100%;
+			height: 26px;
+			background: url('../img/img-box-top-02.png') no-repeat center;
+		}
+
+		.box_group {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			column-gap: 14px;
+			row-gap: 10px;
+			margin-top: 9px;
+		}
+
+		.item_group {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			row-gap: 4px;
+			margin: 2px 0 4px;
+		}
+
+		.move {
+			position: absolute;
+			top: 45px;
+			right: 55px;
+			width: 98px;
+			height: 68px;
+			background: url('../img/img-mouse.png') no-repeat center/cover;
+			z-index: 8;
+			animation: moveright 0.6s infinite alternate ease-in-out;
+		}
+
+		.move>div {
+			position: absolute;
+			bottom: 21px;
+			right: 0;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			background-color: #ff9100;
+			opacity: 0.5;
+			z-index: 7;
+			animation: movecircle 1.2s infinite normal ease-in-out;
+		}
+
+		.move>div:nth-child(2) {
+			animation-delay: 0.1s;
+		}
+
+		@keyframes moveright {
+			0% {
+				transform: translateX(0);
+			}
+
+			50% {
+				transform: translateX(-20px);
+			}
+
+			100% {
+				transform: translateX(-20px);
+			}
+		}
+
+		@keyframes movecircle {
+			0% {
+				transform: translateX(15px);
+				opacity: 0.3;
+			}
+
+			25% {
+				transform: translateX(8px);
+				opacity: 0.5;
+			}
+
+			40% {
+				transform: translateX(-5px);
+				opacity: 0.7;
+			}
+
+			100% {
+				transform: translateX(-5px);
+				opacity: 1;
+			}
+		}
+
+		.box {
+			position: relative;
+			width: 47px;
+			height: 47px;
+			border-radius: 50%;
+			border: 3px solid #202020;
+			background-color: #000;
+		}
+
+		.box_full,
+		.item {
+			width: 47px;
+			height: 47px;
+			background: url('../img/img-tuna.png') no-repeat center/contain;
+		}
+
+		.item {
+			cursor: pointer;
+		}
+
+		.mobon_reset .gift_title {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 64px;
+			font-size: 14px;
+			font-weight: bold;
+			text-align: center;
+			color: #fff;
+			background-color: #ff9100;
+		}
+
+		/* 이동 후 효과 */
+		.mobon_reset .gift_title.active {
+			font-size: 20px;
+			animation: blink1 1.5s infinite;
+		}
+
+		@keyframes blink1 {
+			0% {
+				color: #fff;
+				background-color: #ff9100;
+			}
+
+			25% {
+				color: #000;
+				background-color: #ffd529;
+			}
+
+			50% {
+				color: #fff;
+				background-color: #ff9100;
+			}
+
+			75% {
+				color: #000;
+				background-color: #ffd529;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="mobon_reset">
+		<div class="gift_set">
+			<div class="box_wrap">
+				<div class="box_wrap_bg"></div>
+				<div class="box_name"></div>
+				<ul class="box_group">
+					<div class="box_full"></div>
+					<li class="box_full"></li>
+					<li class="box_full"></li>
+					<li class="box_full"></li>
+					<li class="box_full"></li>
+					<li class="box"></li>
+				</ul>
+			</div>
+			<div class="move">
+				<div></div>
+				<div></div>
+			</div>
+			<ul class="item_group">
+				<li class="item"></li>
+				<li class="item"></li>
+				<li class="item"></li>
+			</ul>
+		</div>
+		<h3 class="gift_title"><span>참치를 선물상자에 담아<br>1등 선물세트를 완성해보세요</span></h3>
+	</div>
+	<script src="../js/frame_player.js"></script>
+</body>
+
+</html>

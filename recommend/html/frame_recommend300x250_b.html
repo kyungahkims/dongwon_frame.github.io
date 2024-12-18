@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+	<title>300x250</title>
+	<link rel="stylesheet" type="text/css" href="//img.mobon.net/Frtb/common/css/mobon_reset.css?201706292">
+	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/jquery.js"></script>
+	<script type="text/javascript" src="//img.mobon.net/js/mobonStorage.js"></script>
+	<!--[if lt IE 9]
+	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/respond.js"></script>
+	<![endif]-->
+	<!--[if lt IE 8]
+	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/html5.js"></script>
+	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/ie7.js"></script>
+	<link type="text/css" rel="stylesheet" href="//img.mobon.net/Frtb/common/css/ie7.css">
+	<![endif]-->
+	<script type="text/javascript" src="//img.mobon.net/newAd/common/webutil.js"></script>
+	<script type="text/javascript" src="//img.mobon.net/Frtb/js/frame_default_script_S.js"></script>
+	<!-- header END -->
+	<script type="text/javascript" src="//img.mobon.net/js/bounceRate.js"></script>
+	<link rel="stylesheet" type="text/css" href="//img.mobon.net/Frtb/css/frame_point.css">
+
+	<style>
+		/* font */
+		@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+		/* Normalize */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.mobon_reset {
+			width: 300px;
+			height: 250px;
+			font-family: Pretendard;
+			color: #000;
+			background-color: #f6f6f6;
+			padding: 10px;
+			overflow: hidden;
+		}
+
+		/* search_wrap */
+		.search_wrap {
+			display: flex;
+			align-items: center;
+			height: 36px;
+			font-size: 14px;
+			font-weight: 600;
+			border: 1px solid #0070bd;
+			border-radius: 20px;
+			background-color: #fff;
+			box-shadow: 0 2px 5px 0 rgba(172, 178, 209, 0.7);
+			padding: 0 16px;
+			margin-bottom: 10px;
+			cursor: pointer;
+		}
+
+		.search_wrap::before {
+			content: "";
+			min-width: 19px;
+			height: 18px;
+			background: url('../img/img-symbol.png') no-repeat center;
+			margin-right: 8px;
+		}
+
+		.search_wrap::after {
+			content: "";
+			min-width: 24px;
+			height: 24px;
+			background: url('../img/btn-s.png') no-repeat center/contain;
+			margin-right: 5px;
+		}
+
+		.search {
+			flex: 1;
+		}
+
+		.typing_wrap {
+			display: inline-flex;
+			align-items: center;
+		}
+
+		.typing {
+			display: inline-block;
+			white-space: nowrap;
+			overflow: hidden;
+			font-family: 14px;
+			border-right: 1px solid #000;
+			animation: typing 5s steps(40, end), blink 0.5s step-end infinite alternate;
+		}
+
+		@keyframes typing {
+			from {
+				width: 0;
+			}
+
+			to {
+				width: 100%;
+			}
+		}
+
+		@keyframes blink {
+			from {
+				border-color: #000;
+			}
+
+			to {
+				border-color: transparent;
+			}
+		}
+
+		/* list_wrap */
+		.list_wrap {
+			border: 1px solid #0070bd;
+			;
+			border-radius: 10px;
+			background-color: #fff;
+			box-shadow: 0 2px 5px 0 rgba(172, 178, 209, 0.7);
+			padding: 9px 20px 13px;
+		}
+
+		.list_wrap>li {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 4px 0;
+			border-bottom: 1px solid #f2f2f2;
+			cursor: pointer;
+		}
+
+		.list_wrap>li div {
+			display: flex;
+			align-items: center;
+		}
+
+		.list_wrap strong {
+			font-size: 15px;
+			font-weight: 600;
+			margin-right: 10px;
+		}
+
+		.list_wrap .title {
+			display: -webkit-box;
+			font-size: 12px;
+			white-space: wrap;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 1;
+			overflow: hidden;
+			opacity: 0;
+			transform: translateY(10px);
+			animation: slideUp 0.6s ease-out forwards;
+		}
+
+		.click0 .title {
+			animation-delay: 0s;
+		}
+
+		.click1 .title {
+			animation-delay: 0.1s;
+		}
+
+		.click2 .title {
+			animation-delay: 0.2s;
+		}
+
+		.click3 .title {
+			animation-delay: 0.3s;
+		}
+
+		.click4 .title {
+			animation-delay: 0.4s;
+		}
+
+		.click5 .title {
+			animation-delay: 0.5s;
+		}
+
+		.click6 .title {
+			animation-delay: 0.6s;
+		}
+
+		.click7 .title {
+			animation-delay: 0.7s;
+		}
+
+		.click8 .title {
+			animation-delay: 0.8s;
+		}
+
+		.click9 .title {
+			animation-delay: 0.9s;
+		}
+
+		@keyframes slideUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px);
+
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.random {
+			justify-content: center;
+			min-width: 25px;
+			font-size: 8px;
+			font-weight: 500;
+		}
+
+		.new::before {
+			content: "NEW";
+			color: #fdb813;
+			font-weight: bold;
+			display: inline-block;
+			text-shadow:
+				0 0 5px rgba(253, 184, 19, 0.8),
+				0 0 10px rgba(253, 184, 19, 0.6),
+				0 0 20px rgba(253, 184, 19, 0.4);
+			animation: sparkle 1.5s infinite alternate;
+		}
+
+		@keyframes sparkle {
+			0% {
+				text-shadow:
+					0 0 5px rgba(253, 184, 19, 0.8),
+					0 0 10px rgba(253, 184, 19, 0.6),
+					0 0 20px rgba(253, 184, 19, 0.4);
+				transform: scale(1);
+			}
+
+			50% {
+				text-shadow:
+					0 0 10px rgba(255, 223, 0, 1),
+					0 0 20px rgba(255, 223, 0, 0.8),
+					0 0 30px rgba(255, 223, 0, 0.6);
+				transform: scale(1.1);
+			}
+
+			100% {
+				text-shadow:
+					0 0 5px rgba(253, 184, 19, 0.8),
+					0 0 10px rgba(253, 184, 19, 0.6),
+					0 0 20px rgba(253, 184, 19, 0.4);
+				transform: scale(1);
+			}
+		}
+
+		.hot::before {
+			content: "HOT";
+			color: #f08;
+			display: inline-block;
+			font-weight: bold;
+			animation: bounce 1s infinite;
+		}
+
+		@keyframes bounce {
+
+			0%,
+			100% {
+				transform: translateY(2px);
+			}
+
+			50% {
+				transform: translateY(-2px);
+			}
+		}
+
+		.up::before {
+			content: "";
+			width: 6px;
+			height: 5px;
+			background: url('../img/icon-up.png') no-repeat center;
+		}
+
+		.down::before {
+			content: "";
+			width: 6px;
+			height: 5px;
+			background: url('../img/icon-down.png') no-repeat center;
+		}
+
+		.hyphen::before {
+			content: "-";
+			font-size: 10px;
+			color: #aaa;
+		}
+
+		.number {
+			margin-left: 2px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="mobon_reset">
+		<div class="search_wrap mobon_box click0">
+			<div class="search">
+				<div class="typing_wrap">
+					<div class="typing">동원몰 실시간 추천 검색어</div>
+				</div>
+			</div>
+		</div>
+		<ul class="list_wrap">
+			<li class="mobon_box click0">
+				<div><strong>1</strong><span class="title"
+						title="샐러드/밀키트/샐러드/밀키트/샐러드/밀키트/샐러드/밀키트">샐러드/밀키트/샐러드/밀키트/샐러드/밀키트/샐러드/밀키트</span></div>
+				<div class="random"></div>
+			</li>
+			<li class="mobon_box click1">
+				<div><strong>2</strong><span class="title"
+						title="통조림/면류/통조림/면류/통조림/면류/통조림/면류">통조림/면류/통조림/면류/통조림/면류/통조림/면류</span></div>
+				<div class="random"></div>
+			</li>
+			<li class="mobon_box click2">
+				<div><strong>3</strong><span class="title" title="우유 및 유제품">우유 및 유제품</span></div>
+				<div class="random"></div>
+			</li>
+			<li class="mobon_box click3">
+				<div><strong>4</strong><span class="title" title="건강식품">건강식품</span></div>
+				<div class="random"></div>
+			</li>
+			<li class="mobon_box click4">
+				<div><strong>5</strong><span class="title" title="명절선물세트">명절선물세트</span></div>
+				<div class="random"></div>
+			</li>
+			<li class="mobon_box click5">
+				<div><strong>6</strong><span class="title" title="생활용품">생활용품</span></div>
+				<div class="random"></div>
+			</li>
+		</ul>
+	</div>
+	<script src="../js/frame_recommend.js"></script>
+</body>
+
+</html>
