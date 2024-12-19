@@ -8,6 +8,8 @@
 	<title>300x250</title>
 	<link rel="stylesheet" type="text/css" href="//img.mobon.net/Frtb/common/css/mobon_reset.css?201706292">
 	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/jquery.js"></script>
+
+
 	<script type="text/javascript" src="//img.mobon.net/js/mobonStorage.js"></script>
 	<!--[if lt IE 9]
 	<script type="text/javascript" src="//img.mobon.net/Frtb/common/script/respond.js"></script>
@@ -26,9 +28,10 @@
 	<!-- 터치펀치 라이브러리 추가 2 -->
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
 	<!-- header END -->
-	<script type="text/javascript" src="//img.mobon.net/js/bounceRate.js"></script>
-	<link rel="stylesheet" type="text/css" href="//img.mobon.net/Frtb/css/frame_point.css">
+	<!-- 	<script type="text/javascript" src="//img.mobon.net/js/bounceRate.js"></script>
+	<link rel="stylesheet" type="text/css" href="//img.mobon.net/Frtb/css/frame_point.css"> -->
 
 	<style>
 		/* font */
@@ -42,6 +45,7 @@
 		}
 
 		.mobon_reset {
+			position: relative;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
@@ -52,6 +56,98 @@
 			color: #000;
 			background: url('../img/img-background.png') no-repeat center/cover;
 			overflow: hidden;
+		}
+
+		.box_wrap_bg span {
+			display: none;
+		}
+
+		.box_wrap_bg.active {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(to bottom, #ff9100, #ffd529);
+			z-index: 9;
+			animation: bg 1s;
+		}
+
+		@keyframes bg {
+			0% {
+				height: 0;
+			}
+
+			100% {
+				height: 100%;
+			}
+		}
+
+		.box_wrap_bg.active::before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 160px;
+			background: url('../img/img-model.png') no-repeat center;
+			animation: bg2 2s;
+			z-index: 10;
+			overflow: hidden;
+		}
+
+		@keyframes bg2 {
+			0% {
+				background: none;
+			}
+
+			100% {
+				background: url('../img/img-model.png') no-repeat center;
+			}
+		}
+
+		.box_wrap_bg.active span {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 189px;
+			height: 54px;
+			font-size: 14px;
+			font-weight: bold;
+			text-align: center;
+			background-color: #fff;
+			border-radius: 10px;
+			margin-bottom: 15px;
+			animation: bg3 3s;
+		}
+
+		@keyframes bg3 {
+			0% {
+				display: none;
+			}
+
+			20% {
+				display: none;
+			}
+
+			100% {
+				display: flex;
+			}
+		}
+
+		.box_wrap_bg.active span::before {
+			content: "";
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			top: -80px;
+			left: 50%;
+			transform: translateX(-50%);
+			background: url('../img/img-trophy.png') no-repeat center;
 		}
 
 		.gift_set {
@@ -93,7 +189,6 @@
 		}
 
 		.box_wrap {
-			position: relative;
 			width: 207px;
 			height: 157px;
 			border: 5px solid #202020;
@@ -101,33 +196,10 @@
 			background-color: #0f0f0f;
 		}
 
-		.box_wrap_bg.active {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			background: url('../img/img-box.png') no-repeat center/cover;
-			z-index: 2;
-			animation: bg 1.5s forwards ease-in-out;
-			transform-origin: top;
-			transform-style: preserve-3d;
-		}
-
-		@keyframes bg {
-			0% {
-				transform: perspective(800px) rotateX(90deg);
-				opacity: 1;
-			}
-
-			100% {
-				transform: perspective(800px) rotateX(0deg);
-				opacity: 1;
-			}
-		}
-
 		.box_name {
 			width: 100%;
 			height: 26px;
-			background: url('../img/img-box-top-02.png') no-repeat center;
+			background: url('../img/img-box-top-01.png') no-repeat center;
 		}
 
 		.box_group {
@@ -232,6 +304,14 @@
 			cursor: pointer;
 		}
 
+		.soccerball {
+			background: url('../img/img-ball-01.png') no-repeat center/contain;
+		}
+
+		.baseball {
+			background: url('../img/img-ball-02.png') no-repeat center/contain;
+		}
+
 		.mobon_reset .gift_title {
 			display: flex;
 			justify-content: center;
@@ -239,49 +319,95 @@
 			height: 64px;
 			font-size: 14px;
 			font-weight: bold;
-			text-align: center;
 			color: #fff;
 			background-color: #ff9100;
 		}
 
-		/* 이동 후 효과 */
-		.mobon_reset .gift_title.active {
-			font-size: 20px;
-			animation: blink1 1.5s infinite;
+		.mobon_reset .gift_title::before {
+			content: "";
+			width: 43px;
+			height: 35px;
+			display: inline-block;
+			background: url('../img/logo.png') no-repeat center;
+			padding-right: 18px;
+			border-right: 2px solid #fff;
 		}
 
-		@keyframes blink1 {
+		.mobon_reset .gift_title span {
+			margin-left: 12px;
+		}
+
+		/* 이동 후 효과 */
+		.mobon_reset .gift_title span.active {
+			font-size: 20px;
+			animation: blink 2s;
+		}
+
+		@keyframes blink {
 			0% {
-				color: #fff;
-				background-color: #ff9100;
+				opacity: 1;
 			}
 
-			25% {
-				color: #000;
-				background-color: #ffd529;
+			40% {
+				opacity: 1;
 			}
 
-			50% {
-				color: #fff;
-				background-color: #ff9100;
+			55% {
+				opacity: 0;
 			}
 
-			75% {
-				color: #000;
-				background-color: #ffd529;
+			70% {
+				opacity: 1;
 			}
+
+			85% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.fail_modal {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 11;
+		}
+
+		.fail_modal::before {
+			content: "";
+			width: 148px;
+			height: 131px;
+			background: url('../img/img-emoji.png') no-repeat center;
+			margin-bottom: 10px;
+		}
+
+		#drawing_canvas {
+			position: absolute;
+			top: 0;
+			width: 100%;
 		}
 	</style>
 </head>
 
 <body>
 	<div class="mobon_reset">
+		<div class="box_wrap_bg"><span>받으시는분이 좋아하는<br>동원 선물세트</span>
+			<canvas id="drawing_canvas" class="canvas"></canvas>
+		</div>
 		<div class="gift_set">
 			<div class="box_wrap">
-				<div class="box_wrap_bg"></div>
 				<div class="box_name"></div>
 				<ul class="box_group">
-					<div class="box_full"></div>
+					<li class="box_full"></li>
 					<li class="box_full"></li>
 					<li class="box_full"></li>
 					<li class="box_full"></li>
@@ -294,14 +420,16 @@
 				<div></div>
 			</div>
 			<ul class="item_group">
+				<li class="item soccerball"></li>
 				<li class="item tuna"></li>
-				<li class="item tuna"></li>
-				<li class="item tuna"></li>
+				<li class="item baseball"></li>
 			</ul>
 		</div>
-		<h3 class="gift_title"><span>참치를 선물상자에 담아<br>1등 선물세트를 완성해보세요</span></h3>
+		<h3 class="gift_title"><span>받으시는 분이 가장 좋아할<br>선물세트를 완성해보세요.</span></h3>
+		<div class="fail_modal"></div>
 	</div>
 	<script src="../js/frame_player.js"></script>
+	<script src="https://img.mobon.net/Frtb/js/drawing_canvas2.js"></script>
 </body>
 
 </html>

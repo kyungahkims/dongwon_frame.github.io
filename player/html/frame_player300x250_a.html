@@ -101,33 +101,6 @@
 			}
 		}
 
-		/* 빵빠레 */
-		.firecracker {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			margin-top: 50px;
-			z-index: 6;
-		}
-
-		.bbang {
-			position: absolute;
-			left: 50%;
-			max-height: 1px;
-		}
-
-		.bbang div {
-			position: absolute;
-			width: 4px;
-			height: 4px;
-			margin: -2px 0 0 -2px;
-			border-radius: 1px;
-			transform-style: preserve-3d;
-			background: var(--confetti-all, var(--b, none));
-			z-index: 999;
-		}
-
 		.gift_set {
 			position: relative;
 			display: flex;
@@ -338,15 +311,18 @@
 				opacity: 1;
 			}
 		}
+
+		#drawing_canvas {
+			width: 100%;
+			position: absolute;
+		}
 	</style>
 </head>
 
 <body>
 	<div class="mobon_reset">
 		<div class="box_wrap_bg">
-			<div class="firecracker">
-				<div class="bbang"></div>
-			</div>
+			<canvas id="drawing_canvas" class="canvas"></canvas>
 		</div>
 		<div class="gift_set">
 			<div class="box_wrap">
@@ -365,14 +341,15 @@
 				<div></div>
 			</div>
 			<ul class="item_group">
-				<li class="item"></li>
-				<li class="item"></li>
-				<li class="item"></li>
+				<li class="item tuna"></li>
+				<li class="item tuna"></li>
+				<li class="item tuna"></li>
 			</ul>
 		</div>
 		<h3 class="gift_title"><span>참치를 선물상자에 담아<br>1등 선물세트를 완성해보세요</span></h3>
 	</div>
 	<script src="../js/frame_player.js"></script>
+	<script src="https://img.mobon.net/Frtb/js/drawing_canvas2.js"></script>
 </body>
 
 </html>
