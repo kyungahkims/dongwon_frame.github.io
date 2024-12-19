@@ -52,11 +52,13 @@ $(window).on('load', function () {
 					});
 					$('.fail_modal').css('display', 'flex');
 					setTimeout(function () {
-						$('.fail_modal').css('display', 'none');
+						$('.fail_modal').fadeOut(1500, function () {
+							$(this).css('display', 'none');
+						});
 						ui.draggable.css({
 							visibility: "visible"
 						});
-					}, 2000);
+					}, 1500);
 				}
 			}
 		}
