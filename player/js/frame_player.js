@@ -56,7 +56,7 @@ $(window).on('load', function () {
 						ui.draggable.css({
 							visibility: "visible"
 						});
-					}, 3000);
+					}, 2000);
 				}
 			}
 		}
